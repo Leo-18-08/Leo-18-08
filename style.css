@@ -1,0 +1,75 @@
+.title_page {
+    text-align: center;
+    font-size: 50px;
+}
+
+body {
+    text-align: center;
+    background: #f8f8f8;
+    font-family: sans-serif;
+}
+
+/* Removed conflicting nav styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    fill: black;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    fill: black;
+    transform: scale(1.1);
+}
+
+/* Make navbar items horizontal and spaced */
+.navigation-horizontal {
+    display: flex;           /* lay out li items in a row */
+    gap: 1rem;               /* spacing between nav items */
+    align-items: center;
+}
+
+/* Small tweak: ensure nav items render correctly inside flex container */
+.navigation-horizontal .nav-item {
+    list-style: none;
+}
+
+/* Keep layout responsive: allow wrapping on very small screens */
+.navigation-horizontal {
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    background:#0f131a;
+    border:1px solid rgba(255,255,255,.08);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.navbar {
+    background-color: #0f131a !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    margin-right: 15px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e0e0e0 !important;
+}
