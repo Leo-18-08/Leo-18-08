@@ -74,3 +74,11 @@ a {
 .nav-link:hover {
     color: #e0e0e0 !important;
 }
+
+.link-light {
+    color: #000000 !important;
+}
+
+.link-light:hover {
+    color: #4c4a4a !important;
+}
