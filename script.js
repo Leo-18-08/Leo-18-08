@@ -5,16 +5,16 @@ const products = [
     price: "249.000đ",
     category: "tee",
     isNew: true,
-    image: "AoPhongLeon.png",
+    image: "image/aophongleon.png",
     description: "Chất cotton 2 chiều, logo Leon mới nhất."
   },
   {
     id: 2,
     name: "Hoodie Leon",
-    price: "489.000đ",
+    price: "389.000đ",
     category: "hoodie",
     isNew: false,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+    image: "image/aohoodie.png",
     description: "Form oversize, nỉ ngoại nhập mềm mịn."
   },
   {
@@ -23,7 +23,7 @@ const products = [
     price: "279.000đ",
     category: "tee",
     isNew: false,
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80",
+    image: "image/aophongleon.png",
     description: "Phiên bản giới hạn với hoạ tiết đặc biệt."
   },
   {
@@ -32,7 +32,7 @@ const products = [
     price: "189.000đ",
     category: "accessory",
     isNew: true,
-    image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
+    image: "image/non.png",
     description: "Chống nắng tốt, chất liệu cotton thoáng khí."
   },
   {
@@ -41,8 +41,8 @@ const products = [
     price: "159.000đ",
     category: "accessory",
     isNew: false,
-    image: "https://images.unsplash.com/photo-1526402464714-2b1f2128fdaa?auto=format&fit=crop&w=900&q=80",
-    description: "Dung tích 750ml, giữ nhiệt 6 giờ."
+    image: "image/binhnuoc.png",
+    description: "Dung tích 750ml, giữ nhiệt trong 18 giờ."
   },
   {
     id: 6,
@@ -50,26 +50,26 @@ const products = [
     price: "529.000đ",
     category: "hoodie",
     isNew: true,
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
+    image: "image/aohoodie.png",
     description: "In chuyển nhiệt, phản quang nổi bật về đêm."
   },
   {
     id: 7,
     name: "Áo khoác bomber",
-    price: "649.000đ",
+    price: "449.000đ",
     category: "hoodie",
     isNew: false,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+    image: "image/aobomber.png",
     description: "Thiết kế 2 lớp, giữ ấm tốt khi di chuyển."
   },
   {
     id: 8,
     name: "Bộ sticker Leon",
-    price: "79.000đ",
+    price: "49.000đ",
     category: "accessory",
     isNew: false,
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-    description: "12 mẫu sticker vinyl chống thấm."
+    image: "image/sticker.png",
+    description: "12 mẫu sticker 'Leon' chống thấm."
   }
 ];
 
@@ -212,13 +212,13 @@ function handleLogin(e) {
 
   localStorage.setItem("currentUser", JSON.stringify(found));
   alert(`Xin chào ${found.name}!`);
-  window.location.href = "mainindex.html";
+  window.location.href = "index.html";
 }
 
 function logout() {
   localStorage.removeItem("currentUser");
   alert("Đã đăng xuất!");
-  window.location.href = "mainindex.html";
+  window.location.href = "index.html";
 }
 
 function showUser() {
