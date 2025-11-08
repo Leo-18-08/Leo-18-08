@@ -74,7 +74,6 @@ const products = [
 ];
 
 const productGrid = document.getElementById("productGrid");
-const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll("#categoryFilters button");
 const accountMenu = document.getElementById("accountMenu");
 const accountTrigger = document.getElementById("accountTrigger");
@@ -107,35 +106,20 @@ function createProductCard(product) {
   return col;
 }
 
-function renderProducts({ category = "all", keyword = "" } = {}) {
+function renderProducts({ category = "all" } = {}) {
   if (!productGrid) return;
   productGrid.innerHTML = "";
 
-  const normalizedKeyword = keyword.trim().toLowerCase();
-
-  const filtered = products.filter((product) => {
-    const matchCategory = category === "all" || product.category === category;
-    const matchKeyword = !normalizedKeyword
-      || product.name.toLowerCase().includes(normalizedKeyword)
-      || product.description.toLowerCase().includes(normalizedKeyword);
-    return matchCategory && matchKeyword;
-  });
-
-  if (filtered.length === 0) {
-    productGrid.innerHTML = `
-      <div class="col-12">
-        <div class="alert alert-dark border border-secondary text-center" role="alert">
-          Không tìm thấy sản phẩm phù hợp. Vui lòng thử từ khóa khác.
-        </div>
-      </div>
-    `;
-    return;
-  }
+  // chỉ lọc theo category
+  const filtered = products.filter(
+    (product) => category === "all" || product.category === category
+  );
 
   const fragment = document.createDocumentFragment();
   filtered.forEach((product) => fragment.appendChild(createProductCard(product)));
   productGrid.appendChild(fragment);
 }
+
 
 function handleFilterClick(event) {
   const button = event.currentTarget;
@@ -146,19 +130,10 @@ function handleFilterClick(event) {
   renderProducts({ category, keyword: searchInput?.value || "" });
 }
 
-let searchTimer;
-function handleSearchInput(event) {
-  const value = event.target.value;
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => {
-    const activeBtn = document.querySelector("#categoryFilters button.active");
-    const category = activeBtn ? activeBtn.dataset.category : "all";
-    renderProducts({ category, keyword: value });
-  }, 200);
-}
 
+  
 /* --------------------
- * Local storage helpers
+ * Local storage
  * -------------------- */
 function getUsers() {
   return JSON.parse(localStorage.getItem("users")) || [];
@@ -168,6 +143,7 @@ function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
+// xử lý đăng ký
 function handleSignup(e) {
   e.preventDefault();
   const name = document.getElementById("signupName").value.trim();
@@ -197,6 +173,7 @@ function handleSignup(e) {
   window.location.href = "login.html";
 }
 
+// xử lý đăng nhập
 function handleLogin(e) {
   e.preventDefault();
   const email = document.getElementById("loginEmail").value.trim();
@@ -215,12 +192,14 @@ function handleLogin(e) {
   window.location.href = "index.html";
 }
 
+// xử lý đăng xuất
 function logout() {
   localStorage.removeItem("currentUser");
   alert("Đã đăng xuất!");
   window.location.href = "index.html";
 }
 
+// hiển thị trạng thái người dùng trên menu tài khoản
 function showUser() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -253,6 +232,7 @@ function showUser() {
   }
 }
 
+// khởi tạo form đăng ký và đăng nhập
 function initAuthForms() {
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
@@ -265,11 +245,11 @@ function initAuthForms() {
   }
 }
 
+// khởi tạo phần sản phẩm
 function initProductsSection() {
   if (!productGrid) return;
   renderProducts({ category: "all" });
   filterButtons.forEach((button) => button.addEventListener("click", handleFilterClick));
-  searchInput?.addEventListener("input", handleSearchInput);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -277,15 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAuthForms();
   initProductsSection();
 
-  searchTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      if (!searchInput) return;
-      searchInput.focus();
-      searchInput.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  });
-
-  console.log("✅ MixiStyle UI ready");
+  console.log("Leon UI ready");
 });
 
 window.logout = logout;
