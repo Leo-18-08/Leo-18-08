@@ -81,7 +81,7 @@ const searchTriggers = document.querySelectorAll("[data-search-trigger]");
 
 function createProductCard(product) {
   const col = document.createElement("div");
-  col.className = "col-sm-6 col-lg-3";
+  col.className = "col-lg-3";
 
   col.innerHTML = `
     <article class="product-card">
@@ -97,7 +97,7 @@ function createProductCard(product) {
           <span class="price-tag">${product.price}</span>
           <button class="btn btn-sm btn-primary rounded-pill" type="button">
             <i class="bi bi-bag-plus"></i> Thêm giỏ hàng
-          </button>
+          </button> 
         </div>
       </div>
     </article>
